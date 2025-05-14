@@ -30,4 +30,4 @@ A simple and secure Java Swing-based password generator application that include
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/PiyushSaxena05/phash-password-generator.git
+   git clone https://github.com/PiyushSaxena05/P-hash-passwordgenerator
