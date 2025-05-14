@@ -18,7 +18,7 @@ A simple and secure Java Swing-based password generator application that include
 
 ## 🛠️ Built With
 
-- Java (JDK 17+ recommended)
+- Java 
 - Swing (Java GUI library)
 
 ## 📷 Screenshot
