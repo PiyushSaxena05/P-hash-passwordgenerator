@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Phash {
 
-    // Method to generate a random password
+    
     public static String genPassword(int length, boolean uppercase, boolean lowercase, boolean numbers, boolean special) {
         String lower = "abcdefghijklmnopqrstuvwxyz";
         String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -27,7 +27,7 @@ public class Phash {
         return password.toString();
     }
 
-    // Method to analyze the strength of the password
+    
     public static String StrenghAnalyze(String check) {
         int length = check.length();
 
@@ -109,7 +109,7 @@ public class Phash {
                     String strength = StrenghAnalyze(password);
                     strengthLab.setText("Strength: " + strength);
 
-                    // Generate OTP and display it
+                    
                     String otp = generateOTP();
                     otpLabel.setText("OTP: " + otp);
 
@@ -129,7 +129,7 @@ public class Phash {
             }
         });
 
-        // OTP Verification Action
+       
         JButton verifyButton = new JButton("Verify OTP");
         verifyButton.addActionListener(new ActionListener() {
             @Override
