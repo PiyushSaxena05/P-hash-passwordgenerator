@@ -6,6 +6,8 @@ import java.util.Random;
 public class Phash {
 
     
+    static String generatedOtp = "";
+
     public static String genPassword(int length, boolean uppercase, boolean lowercase, boolean numbers, boolean special) {
         String lower = "abcdefghijklmnopqrstuvwxyz";
         String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -27,7 +29,6 @@ public class Phash {
         return password.toString();
     }
 
-    
     public static String StrenghAnalyze(String check) {
         int length = check.length();
 
@@ -52,7 +53,6 @@ public class Phash {
         }
     }
 
-    
     public static String generateOTP() {
         Random rand = new Random();
         int otp = 100000 + rand.nextInt(900000);
@@ -64,7 +64,7 @@ public class Phash {
         JFrame frame = new JFrame("P-hash");
         frame.setSize(500, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(new GridLayout(14, 1));
+        frame.setLayout(new GridLayout(15, 1)); // One extra row for verify button
 
         JTextField text = new JTextField();
         JTextField phoneText = new JTextField();
@@ -109,10 +109,9 @@ public class Phash {
                     String strength = StrenghAnalyze(password);
                     strengthLab.setText("Strength: " + strength);
 
-                    
-                    String otp = generateOTP();
-                    otpLabel.setText("OTP: " + otp);
-
+                    // Generate OTP and store it
+                    generatedOtp = generateOTP();
+                    otpLabel.setText("OTP: " + generatedOtp);
 
                     String phoneNumber = phoneText.getText();
                     if (!phoneNumber.isEmpty()) {
@@ -129,7 +128,6 @@ public class Phash {
             }
         });
 
-       
         JButton verifyButton = new JButton("Verify OTP");
         verifyButton.addActionListener(new ActionListener() {
             @Override
@@ -137,8 +135,10 @@ public class Phash {
                 String enteredOtp = otpText.getText();
                 if (enteredOtp.isEmpty()) {
                     JOptionPane.showMessageDialog(frame, "Please enter the OTP.");
-                } else {
+                } else if (enteredOtp.equals(generatedOtp)) {
                     JOptionPane.showMessageDialog(frame, "OTP verified successfully!");
+                } else {
+                    JOptionPane.showMessageDialog(frame, "Wrong OTP entered.");
                 }
             }
         });
@@ -156,7 +156,7 @@ public class Phash {
             }
         });
 
-        frame.setVisible(true);
         frame.add(mode);
+        frame.setVisible(true);
     }
 }
